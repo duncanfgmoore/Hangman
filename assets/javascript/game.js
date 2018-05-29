@@ -1,68 +1,147 @@
-
-// Array of the possible words computer can select and letters usable
-
-var teams = ["Bruins", "Sabres", "Red Wings", "Panthers", "Canadiens", "Senators", "Lightning", "Maple Leafs",
- "Hurricanes", "Blue Jackets", "Devils", "Islanders", "Rangers", "Flyers",
-"Penguins", "Capitals", "Blackhawks", "Avalanche","Stars", "Wild", "Preators", "Blues", "Jets",
-"Ducks", "Coyotes", "Flames", "Oilers", "Kings", "Sharks", "Canucks", "Golden Knights"];
-
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
-"l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-// Selects a random word from the array
-
-var rand = Math.floor(Math.random() * teams.length);
-
-var rightWord = [];
-var wrongWord = [];
-
-// list of variables being used
-var choosenWord = teams[rand];
+// reference DOM elements
+document.addEventListener("DOMContentLoaded", function () {
 
 
-// This replaces the letters with underscores
+    var $newGameButton = document.getElementById("newgame");
+    var $placeholders = document.getElementById("answerarea");
+    var $guessedLetters = document.getElementById("wrongguess");
+    var $guessesLeft = document.getElementById("guessesleft");
+    var $wins = document.getElementById("wins");
+    var $losses = document.getElementById("losses");
 
 
-var underScore = [];
+    //create variables
 
-console.log(choosenWord);
+    var wordBank = ['B R U I N S', 'P A N T H E R S', 'D E V I L S', 'F L Y E R S', 'W I L D', 'B L U E S', 'J E T S',
+        'D U C K S', 'F L A M E S', 'O I L E R S', 'K I N G S'];
 
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 9;
+    var gameRunning = false;
+    var pickedWord = '';
+    var pickedWordPlaceholderArr = [];
+    var guessedLetterBank = [];
+    var incorrectLetterBank = [];
 
-var generateUnderScore = () => {
+    // function to start a new game
 
-    for (var i = 0; i < choosenWord.length; i++) {
-                underScore.push("_");
-    }
-    
-    return underScore;
-}
-console.log(generateUnderScore());
+    function newGame() {
+        console.log("entered new game");
+        gameRunning = true;
+        guessesLeft = 9;
+        guessedLetterBank = [];
+        incorrectLetterBank = [];
+        pickedWordPlaceholderArr = [];
 
-//get users guess
+        pickedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
-document.addEventListener('keypress', (event) => {
-
-    var keycode = event.keyCode;
-    var keyword = String.fromCharCode(event.keyCode);
-    console.log(choosenWord.indexOf(keyword));
-//if users guess is right
-    if (choosenWord.indexOf(keyword) > -1) {
-        rightWord.push(keyword);
-// Where the letter will be replacing the underscore
-        underScore[choosenWord.indexOf(keyword)] = keyword;
-        if (underScore.join('') == choosenWord) {
-            alert("you win");
+        // creating placeholders of new word
+        for (var i = 0; i < pickedWord.length; i++) {
+            if (pickedWord[i] === ' ') {
+                pickedWordPlaceholderArr.push(' ');
+            } else {
+                pickedWordPlaceholderArr.push('_');
+            }
         }
-        console.log(rightWord);
-    } else {
-        wrongWord.push(keyword);
-        console.log(wrongWord);
+
+        // writing things on the user screen
+        $guessesLeft.textContent = guessesLeft;
+        $placeholders.textContent = pickedWordPlaceholderArr.join('');
+        $guessedLetters.textContent = incorrectLetterBank;
     }
 
+    // the letters that were guessed
+    function letterGuess(letter) {
+        console.log(letter);
+
+        if (gameRunning === true && guessedLetterBank.indexOf(letter) === -1) {
+            //running our game
+            guessedLetterBank.push(letter);
+
+            // check if guessed letter is good
+            for (var i = 0; i < pickedWord.length; i++) {
+                //converting letters to lower case
+                if (pickedWord[i].toLowerCase() === letter.toLowerCase()) {
+                    // if good switches out placeholder for letter
+                    pickedWordPlaceholderArr[i] = pickedWord[i];
+                }
+            }
+
+            $placeholders.textContent = pickedWordPlaceholderArr.join('');
+            // pass letter into our checkIncorrect function
+            checkIncorrect(letter);
+        }
+        else {
+            if (!gameRunning) {
+                alert("game isn't run");
+            } else {
+                alert("you already guessed that");
+            }
+        }
+    }
+    //check for incorrect guesses
+    function checkIncorrect(letter) {
+        //check to see if letter didn't make it into out placeholder
+        if (
+            pickedWordPlaceholderArr.indexOf(letter.toLowerCase()) === -1
+            &&
+            pickedWordPlaceholderArr.indexOf(letter.toUpperCase()) === -1
+        ) {
+            guessesLeft--;
+            //add incorrect letter to incorrect letter bank
+            incorrectLetterBank.push(letter);
+            $guessedLetters.textContent = incorrectLetterBank.join(' ');
+            // write new amount of guesses left to DOM
+            $guessesLeft.textContent = guessesLeft;
+        }
+    }
+    //checklose
+
+    //checks win
+
+    // add events listener for new game
+    //document.onload = function() {
+    // 
+
+
+    //alert("page loaded");
+    $newGameButton.addEventListener('click', newGame);
+    //document.addEventListener("click", function() {
+    //   alert("clicked");
+    //}) 
+
+    //add onkeyup even to trigger letterGuess
+
+    document.onkeyup = function (event) {
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            letterGuess(event.key);
+        }
+    }
 
 });
 
 
-// check if the guess is right
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -6,18 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hockey Hangman</title>
 
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 
 <body>
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    
     
     <h1>Hockey Hangman</h1>
 
-    <div id="answerarea">_ _ _ _ _</div>
+    <div id="answerarea"> _ _ _ _ _ _ _</div>
 
-    <div>Letters Guessed: <span id="guessedLetters"></span></div>
+    <div>Wrong Letters: <span id="wrongguess"></span></div>
 
-    <div>Guesses Left: <span id="guessesLeft">9</span></div>
+    <div>Guesses Left: <span id="guessesleft">9</span></div>
+
+    <div>Games Won: <span id="wins"></span></div>
+
+    <button id="newgame">New Game</button>
 </body>
 
 </html>
