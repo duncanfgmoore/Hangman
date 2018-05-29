@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else {
             if (!gameRunning) {
-                alert("game isn't run");
+                alert("Press button to begin.");
             } else {
-                alert("you already guessed that");
+                alert("You already guessed that.");
             }
         }
     }
@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
             wins++;
             gameRunning = false;
             $wins.textContent = wins;
+            alert("You Win!")
         }
     }
     // add events listener for new game
