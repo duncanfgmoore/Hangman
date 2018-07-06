@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hockey Hangman</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -12,21 +16,48 @@
 </head>
 
 <body>
-    
-    
+
+
     <h1>Hockey Hangman</h1>
 
-    <div id="answerarea"> CLICK BUTTON TO BEGIN</div>
+    <div class="container">
 
-    <div id="wrongletters" >Wrong Letters: <div id="wrongguess"></div></div>
+        <div class="col-md-7" id="leftBar">
+            <div id="answerarea"> CLICK BUTTON TO BEGIN</div>
 
-    <div id="guesses" >Guesses Left: <span id="guessesleft">9</span></div>
+            <div id="wrongletters">Wrong Letters:
+                <div id="wrongguess"></div>
+            </div>
 
-    <div id="gameswon" >Games Won: <span id="wins"></span></div>
+            <div id="newgamebutton">
+                <button class="btn btn-success" id="newgame">New Game</button>
+            </div>
 
-    <div id="gameslost" >Games Lost:<span id="losses"></span></div>
+        </div>
 
-    <div id="newgamebutton" ><button id="newgame">New Game</button></div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4" id="rightBar">
+
+            <div id="guesses">Guesses Left:
+                <span id="guessesleft">9</span>
+            </div>
+
+            <div id="gameswon">Games Won:
+                <span id="wins"></span>
+            </div>
+
+            <br>
+
+            <div id="gameslost">Games Lost:
+                <span id="losses"></span>
+            </div>
+
+
+
+
+        </div>
+    </div>
 </body>
 
 </html>

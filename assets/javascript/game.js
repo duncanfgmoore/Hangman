@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // function to start a new game
 
     function newGame() {
-        console.log("entered new game");
+        
         gameRunning = true;
         guessesLeft = 9;
         guessedLetterBank = [];
@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else {
             if (!gameRunning) {
-                alert("Press button to begin.");
+                alert("Press New Game Button to Start!");
             } else {
-                alert("You already guessed that.");
+                alert("You have already guessed that letter.");
             }
         }
     }
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
             guessesLeft--;
             //add incorrect letter to incorrect letter bank
-            incorrectLetterBank.push(letter);
+            incorrectLetterBank.push(letter.toUpperCase());
             $guessedLetters.textContent = incorrectLetterBank.join(' ');
             // write new amount of guesses left to DOM
             $guessesLeft.textContent = guessesLeft;
