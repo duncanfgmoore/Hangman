@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
     //create variables
 
     var wordBank = ['B R U I N S', 'P A N T H E R S', 'D E V I L S', 'F L Y E R S',
-         'W I L D', 'B L U E S', 'J E T S', 'S A B R E S', 'R E D  W I N G S', 'C A N A D I E N S',
+         'W I L D', 'B L U E S', 'J E T S', 'S A B R E S', 'C A N A D I E N S',
         'D U C K S', 'F L A M E S', 'O I L E R S', 'K I N G S', 'S E N A T O R S', 'L I G H T N I N G',
-        'M A P L E  L E A F S', 'H U R R I C A N E S', 'B L U E  J A C K E T S', 'R A N G E R S', 'I S L A N D E R S',
+         'H U R R I C A N E S',  'R A N G E R S', 'I S L A N D E R S',
         'P E N G U I N S', 'C A P I T A L S', 'B L A C K H A W K S', 'A V A L A N C H E',
-        'S T A R S', 'C O Y O T E S', 'S H A R K S', 'C A N U C K S', 'G O L D E N  K N I G H T S'];
+        'S T A R S', 'C O Y O T E S', 'S H A R K S', 'C A N U C K S'];
 
     var wins = 0;
     var losses = 0;
