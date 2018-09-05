@@ -9,3 +9,8 @@ Simple hangman application testing the Users knowledge of NHL team names. User m
 - Javascript
 - CSS
 - Bootstrap
+
+
+# Screen Shot
+
+![screenshot](assets/images/hangmanScreen.jpeg)
